@@ -1,0 +1,17 @@
+.userData {
+    padding: 8px;
+}
+
+.userAva {
+    weidth: 80px;
+    height: 80px;
+    border-radius: 50px;
+}
+
+.smth {
+    margin-top: 10px;
+}
+
+.selectedPage{
+    font-weight: bold;
+}

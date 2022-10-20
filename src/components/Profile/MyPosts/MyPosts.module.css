@@ -1,0 +1,14 @@
+.item {
+    color: #004967;
+    padding: 0.7em;
+}
+
+.item img {
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
+}
+
+.postBlock {
+    display: inline;
+}

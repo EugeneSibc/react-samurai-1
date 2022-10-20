@@ -1,0 +1,15 @@
+.head {
+    margin-bottom: 0em;
+}
+.icon {
+    display: inline-block;
+    padding: 0.5em;
+}
+.img {
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
+}
+.name {
+    text-align: center;
+}
