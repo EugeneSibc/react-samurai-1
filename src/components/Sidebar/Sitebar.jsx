@@ -9,7 +9,7 @@ const Sitebar = (props) => {
 
     let path = "/dialogs/";
     let sidebarElement = props.friends.map(
-        d => <NavLink key={d.id}to={path + d.id}>
+        d => <NavLink key={d.id} to={path + d.id}>
             <Friends name={d.name} img={d.img}/>
         </NavLink>
     )

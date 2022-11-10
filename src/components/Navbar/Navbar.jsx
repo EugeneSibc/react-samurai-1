@@ -8,25 +8,25 @@ const Navbar = (props) => {
     return (
         <nav className={s.nav}>
             <div className={s.item}>
-                <NavLink className={(navData)=>navData.idActive ? s.active:""} to='/profile'>Profile</NavLink>
+                <NavLink className={(navData)=>navData.isActive ? s.active:""} to='/profile'>Profile</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink className={(navData)=>navData.idActive ? s.active:""} to='/dialogs'>Messages</NavLink>
+                <NavLink className={(navData)=>navData.isActive ? s.active:""} to='/dialogs'>Messages</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink className={(navData)=>navData.idActive ? s.active:""} to='/users'>Users</NavLink>
+                <NavLink className={(navData)=>navData.isActive ? s.active:""} to='/users'>Users</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink className={(navData)=>navData.idActive ? s.active:""} to='/photo'>Photo</NavLink>
+                <NavLink className={(navData)=>navData.isActive ? s.active:""} to='/photo'>Photo</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink className={(navData)=>navData.idActive ? s.active:""} to='/settings'>Settings</NavLink>
+                <NavLink className={(navData)=>navData.isActive ? s.active:""} to='/settings'>Settings</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink className={(navData)=>navData.idActive ? s.active:""} to='/mussic'>Mussic</NavLink>
+                <NavLink className={(navData)=>navData.isActive ? s.active:""} to='/mussic'>Mussic</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink className={(navData)=>navData.idActive ? s.active:""} to='/news'>News</NavLink>
+                <NavLink className={(navData)=>navData.isActive ? s.active:""} to='/news'>News</NavLink>
             </div>
             {/*className={s.sidebar}*/}
             <div>
