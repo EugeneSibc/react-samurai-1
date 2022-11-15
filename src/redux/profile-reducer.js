@@ -46,13 +46,11 @@ const profileReducer = (state = initialState, action) => {
     export const updateNewPostTextActionCreator = (text) => ({type:'UPDATE-NEW-POST-TEXT', newText: text});
     export const setUserProfile = (profile) => ({type:'SET-USER-PROFILE', profile})
 
-/*
 export const getUserProfile = (userId) => (dispatch) => {
             usersAPI.getProfile(userId)
         .then(response=>{
             dispatch(setUserProfile(response.data));
         });
 }
-*/
 
 export default profileReducer;
