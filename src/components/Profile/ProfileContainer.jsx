@@ -46,7 +46,7 @@ class ProfileContainer extends React.Component{
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth
+    /*isAuth: state.auth.isAuth*/
 })
 
 function withRouter(Component){
@@ -60,7 +60,7 @@ function withRouter(Component){
     }
     return ComponentWithRouterProp;
 }
-
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
 
 export default
-    connect(mapStateToProps, {getUserProfile})(withRouter(ProfileContainer));
+    connect(mapStateToProps, {getUserProfile})(withRouter(AuthRedirectComponent));
