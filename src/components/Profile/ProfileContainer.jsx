@@ -62,5 +62,7 @@ function withRouter(Component){
 }
 let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
 
-export default
-    connect(mapStateToProps, {getUserProfile})(withRouter(AuthRedirectComponent));
+export default compose (
+    connect(mapStateToProps, {getUserProfile}),
+    withRouter
+)(AuthRedirectComponent);
