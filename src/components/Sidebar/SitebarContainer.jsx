@@ -2,8 +2,8 @@ import React from 'react';
 import s from './Sidebar.module.css';
 import Friends from './Friends/Friends';
 import {NavLink} from "react-router-dom";
-import connect from "react-redux/lib/connect/connect";
 import Sitebar from "./Sitebar";
+import {connect} from "react-redux";
 
 
 

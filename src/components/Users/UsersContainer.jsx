@@ -1,6 +1,5 @@
 import React from 'react';
 import Users from './UsersC';
-import connect from "react-redux/lib/connect/connect";
 import {
     follow, getUsers,
     setCurrentPage,
@@ -12,6 +11,7 @@ import {
 import axios from "axios";
 import Preloader from "../common/Preloader/Preloader";
 import {usersAPI} from "../../api/api";
+import {connect} from "react-redux";
 
 
 class UsersAPIContainer extends React.Component {

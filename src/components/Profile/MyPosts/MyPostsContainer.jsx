@@ -2,7 +2,8 @@ import React from 'react';
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
 import StoreContext from "../../../StoreContext";
-import connect from "react-redux/lib/connect/connect";
+import {connect} from "react-redux";
+
 
 
 /*const MyPostsContainer = (props) => {

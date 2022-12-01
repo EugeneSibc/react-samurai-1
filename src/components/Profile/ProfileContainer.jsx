@@ -2,12 +2,13 @@ import React from 'react';
 
 import Profile from './Profile';
 import {getStatus, getUserProfile, setUserProfile, updateStatus} from "../../redux/profile-reducer";
-import connect from "react-redux/lib/connect/connect";
+
 
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {Navigate, useLocation, useNavigate, useParams} from "react-router";
 import axios from "axios";
+import {connect} from "react-redux";
 
 
 

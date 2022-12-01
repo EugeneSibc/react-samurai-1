@@ -4,9 +4,9 @@ import DialogsItem from "./DialogsItem/DialogsItem";
 import Message from "./Message/Message";
 import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/dialog-reducer";
 import Dialogs from "./Dialogs";
-import connect from "react-redux/lib/connect/connect";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {connect} from "react-redux";
 
 
 
