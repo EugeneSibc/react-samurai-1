@@ -1,17 +1,23 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import handleSubmit from "redux-form/lib/handleSubmit";
+import {connect} from "react-redux";
+import {getUserLogin} from "../../redux/auth-reduser";
+import {maxLengthCreator, required} from "../../utils/validators";
+import {Input} from "../common/FormsControl/FormsControl";
 
 
 
+const maxLength10=maxLengthCreator(10)
 const LoginForm =(props)=>{
-    return <div>
+    return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={"Login"} component={'input'} name={'login'}/>
+                <Field placeholder="Login" component={Input} name='login'
+                        validate={[required,maxLength10]}/>
             </div>
             <div>
-                <Field placeholder={"Password"} component={'input'} name={'password'}/>
+                <Field placeholder="Password" component={Input} name='password' type='password'
+                       validate={[required,maxLength10]}/>
             </div>
             <div>
                 <Field component={'input'} type={"checkbox"} name={'rememberMe'}/>remember me
@@ -20,19 +26,23 @@ const LoginForm =(props)=>{
                 <button>Login</button>
             </div>
         </form>
-    </div>
+    )
 }
 
 const LoginReduxForm=reduxForm({form: 'login'})(LoginForm)
 
 const Login = (props) => {
-    const onSubmit=(formData)=>{
-        console.log(formData);
+    const onSubmit=({login})=>{
+        console.log(login);
+
+
     }
     return <div>
         <h1>Login</h1>
+        <span>{props.report}</span>
         <LoginReduxForm onSubmit={onSubmit}/>
+
         <a href="https://social-network.samuraijs.com/login" target="_blank">Sign In</a>
     </div>
 }
-export default Login;
+export default (Login);
