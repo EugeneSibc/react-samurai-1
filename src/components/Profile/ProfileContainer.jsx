@@ -50,7 +50,7 @@ class ProfileContainer extends React.Component{
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
-    isAuth: state.auth.isAuth
+    /*isAuth: state.auth.isAuth*/
 })
 
 function withRouter(Component){
@@ -68,6 +68,6 @@ function withRouter(Component){
 
 export default compose (
     connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
-    withRouter
-    // withAuthRedirect
+    withRouter,
+    withAuthRedirect
 )(ProfileContainer);
