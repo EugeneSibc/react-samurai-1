@@ -8,3 +8,6 @@
 {
     color: red;
 }
+.formSummaryErrors {
+    border: red 1px solid;
+}
