@@ -14,14 +14,27 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import themePicture from './assets/images/community.jpg';
+import {useLocation, useNavigate, useParams} from "react-router";
+
+import {connect} from "react-redux";
+import {compose} from "redux";
+import {initializeApp} from "./redux/app-reducer";
+import Preloader from "./components/common/Preloader/Preloader";
 
 
 
-const App = (props) => {
-    return (
+class App extends React.Component {
+    componentDidMount() {
+        this.props.initializeApp()
+    }
+    render() {
+        if(!this.props.initialized){
+            return <Preloader/>
+        }
+        return (
             <div className='app-wrapper'>
                 <HeaderContainer/>
-                <Navbar />
+                <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
                         <Route path='/profile/:userId' element={<ProfileContainer/>}/>
@@ -40,9 +53,26 @@ const App = (props) => {
 
             </div>
 
-    )
+        )
 
+    }
+}
+const mapStateToProps = (state)=>({
+    initialized: state.app.initialized
+})
+
+function withRouter(Component){
+    function ComponentWithRouterProp(props){
+        let location = useLocation();
+        let navigate = useNavigate();
+        let params = useParams();
+        return(
+            <Component {...props} router={{location,navigate,params}}/>
+        );
+    }
+    return ComponentWithRouterProp;
 }
 
-
-export default App;
+export default compose(
+    withRouter,
+    connect(mapStateToProps,{initializeApp}))(App);
