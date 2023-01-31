@@ -56,13 +56,13 @@ const usersReducer = (state = initialState, action) => {
             return {...state,
             followingInProgress: action.isFetching
                 ? [...state.followingInProgress, action.userId]
-                : state.followingInProgress.filter(id => id != action.userId)
+                : state.followingInProgress.filter(id => id !== action.userId)
             }
         }
 
         default:
             return state;
-    };
+    }
 }
 
 export const followSuccess = (userID) => ({type: FOLLOW, userID });
@@ -77,10 +77,10 @@ export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
         usersAPI.getUsers(currentPage, pageSize)
-            .then(response =>{
+            .then(data =>{
             dispatch(toggleIsFetching(false));
-            dispatch(setUsers(response.data.items));
-            dispatch(setTotalUsersCount(response.data.totalCount));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
             dispatch(setCurrentPage(currentPage))
         })
     }
@@ -88,8 +88,8 @@ export const getUsers = (currentPage, pageSize) => {
 export const follow = (userId)=>{
     return (dispatch)=> {
         dispatch(toggleFollowingProgress(true, userId));
-        usersAPI.follow(userId).then(response => {
-            if (response.data.resultCode == 0) {
+        usersAPI.follow(userId).then(data => {
+            if (data.resultCode === 0) {
                 dispatch(followSuccess(userId));
             }
             dispatch(toggleFollowingProgress(false, userId));
@@ -100,8 +100,8 @@ export const follow = (userId)=>{
 export const unfollow = (userId)=>{
     return (dispatch)=> {
         dispatch(toggleFollowingProgress(true, userId));
-        usersAPI.unfollow(userId).then(response => {
-            if (response.data.resultCode == 0) {
+        usersAPI.unfollow(userId).then(data => {
+            if (data.resultCode === 0) {
                 dispatch(unfollowSuccess(userId));
             }
             dispatch(toggleFollowingProgress(false, userId));
