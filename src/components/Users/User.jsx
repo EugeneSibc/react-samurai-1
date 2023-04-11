@@ -5,7 +5,7 @@ import React from "react";
 
 let User = ({user, followingInProgress, unfollow, follow})=>{
     return(
-        <div>
+        <div className={styles.userData}>
             <span>
                 <div>
                     <NavLink to = {'/profile/' + user.id}>
@@ -26,6 +26,8 @@ let User = ({user, followingInProgress, unfollow, follow})=>{
                                   onClick={() => {follow(user.id)}}
                         >Follow</button>}
                 </div>
+                <div>{user.name}</div>
+                <div>{user.status}</div>
             </span>
 
         </div>
