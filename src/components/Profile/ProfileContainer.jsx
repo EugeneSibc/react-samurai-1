@@ -1,13 +1,10 @@
 import React from 'react';
 
 import Profile from './Profile';
-import {getStatus, getUserProfile, setUserProfile, updateStatus} from "../../redux/profile-reducer";
-
-
+import {getStatus, getUserProfile, savePhoto, setUserProfile, updateStatus} from "../../redux/profile-reducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {Navigate, useLocation, useNavigate, useParams} from "react-router";
-import axios from "axios";
 import {connect} from "react-redux";
 
 
@@ -20,29 +17,22 @@ import {connect} from "react-redux";
 class ProfileContainer extends React.Component{
     componentDidMount() {
         let userId = this.props.router.params.userId;
-        /*if(!userId){
-            userId = 2;
+        if(!userId){
+            userId = this.props.authorizedUserId
         }
-        axios.get('https://social-network.samuraijs.com/api/1.0/profile/' + userId)
-            .then(response=>{
-                this.props.setUserProfile(response.data);
-            })*/
         this.props.getUserProfile(userId)
         this.props.getStatus(userId)
-
-        /*usersAPI.getProfile(userId)
-            .then(response=>{
-                this.props.setUserProfile(response.data);
-            });*/
 }
 
     render(){
-        /*if(!this.props.isAuth){
-            return <Navigate to='/login'/>
-        }*/
         return(
-            <Profile {...this.props} profile={this.props.profile}
-                status={this.props.status} updateStatus={this.props.updateStatus}/>
+            <Profile {...this.props}
+                     profile={this.props.profile}
+                     isOwner={!this.props.router.params.userId}
+                     status={this.props.status}
+                     updateStatus={this.props.updateStatus}
+                     savePhoto={this.props.savePhoto}
+            />
         )
     }
 }
@@ -50,7 +40,8 @@ class ProfileContainer extends React.Component{
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
-    /*isAuth: state.auth.isAuth*/
+    isAuth: state.auth.isAuth,
+    authorizedUserId: state.auth.userId
 })
 
 function withRouter(Component){
@@ -67,7 +58,7 @@ function withRouter(Component){
 // let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
 
 export default compose (
-    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
+    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus,savePhoto}),
     withRouter,
-    withAuthRedirect
+    // withAuthRedirect
 )(ProfileContainer);
