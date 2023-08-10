@@ -15,6 +15,8 @@ let User = ({user, followingInProgress, unfollow, follow})=>{
                              className={styles.userAva}/>
                     </NavLink>
                 </div>
+                <div>{user.name}</div>
+                <div>{user.status}</div>
                 <div>
                     {user.followed
                         ? <button disabled={followingInProgress
@@ -26,8 +28,6 @@ let User = ({user, followingInProgress, unfollow, follow})=>{
                                   onClick={() => {follow(user.id)}}
                         >Follow</button>}
                 </div>
-                <div>{user.name}</div>
-                <div>{user.status}</div>
             </span>
 
         </div>
